@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="product" class="com.spring.constructor.confusion.Product">
+	<constructor-arg value="IPhone" name="productName"></constructor-arg>
+	<constructor-arg value="10" name="pid"></constructor-arg>
+</bean>
+
+<bean id="bicycle" class="com.spring.inner.bean.Bicycle">
+	<property name="manufacturer" value="Honda"/>
+	<property name="chain">
+		<bean class="com.spring.inner.bean.Chain">
+			<property name="type" value="metal"></property>
+		</bean>
+	</property>
+</bean>
+
+<bean id="yamahaEngine" class="com.spring.idref.YamahaEngineImpl"/>
+<bean id="suzukiEngine" class="com.spring.idref.SuzukiEngineImpl"></bean>
+<bean id="car" class="com.spring.idref.Car">
+	<constructor-arg>
+		<idref bean="yamahaEngine"/>
+	</constructor-arg>
+</bean>
+
+
+</beans>
